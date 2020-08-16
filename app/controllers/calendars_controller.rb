@@ -2,23 +2,23 @@ class CalendarsController < ApplicationController
 
   # １週間のカレンダーと予定が表示されるページ
   def index
-    getWeek
-    @plan = Plan.new
+    get_week #「getWeek」だったものを変えた
+    @plan = Plan.new #合ってる
   end
 
   # 予定の保存
   def create
-    Plan.create(plan_params)
-    redirect_to action: :index
+    Plan.create(plan_params) #「play = Plan.create(plan_params)」にしようとしたけどやめた
+    redirect_to action: :index #リダリレクト先（action/indexアクション）を読み込む
   end
 
   private
 
   def plan_params
-    params.require(:calendars).permit(:date, :plan)
+    params.require(:calendars).permit(:date, :plan) #合ってる/プライベートメソッドとして、ストロングパラメーターを定義して、createアクション内のcreateメソッドで実行
   end
 
-  def getWeek
+  def get_week #「getWeek」だったものを変えた
     wdays = ['(日)','(月)','(火)','(水)','(木)','(金)','(土)']
 
     # Dateオブジェクトは、日付を保持しています。下記のように`.today.day`とすると、今日の日付を取得できます。
@@ -34,7 +34,7 @@ class CalendarsController < ApplicationController
       plan = @plans.map do |plan|
         plans.push(plan.plan) if plan.date == @todays_date + x
       end
-      days = { :month => (@todays_date + x).month, :date => (@todays_date+x).day, :plans => plans}
+      days = { month: (@todays_date + x).month, date: (@todays_date+x).day, plans: plans}
       @week_days.push(days)
     end
 
