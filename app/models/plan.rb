@@ -1,4 +1,4 @@
 class Plan < ApplicationRecord
-  validates :plan, presence: true #空のplanができない
-  validates :date, presence: true #空のdateができない
+  validates :plan, presence: true #空の場合はDBに保存しないというバリデーションを設定
+  validates :date, presence: true #空の場合はDBに保存しないというバリデーションを設定
 end
