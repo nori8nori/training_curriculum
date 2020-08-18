@@ -11,8 +11,7 @@
   <% @week_days.each do |day| %>
     <div class='item'>
       <div class='date'>
-        <%= day[:month] %>/<%= day[:date] %><%= day[:youbi]  %><!--ここを修正する-->
-        <!--<% day[:month] %>/<% day[:date] %><-->
+        <%= day[:month] %>/<%= day[:date] %><%= day[:youbi]  %><!--曜日を追加-->
       </div>
       <ul class='content'>
       <% if day[:plans].length != 0 %>
